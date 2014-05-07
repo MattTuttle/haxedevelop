@@ -82,7 +82,7 @@ namespace MonoDevelop.Core
 			}
 			
 			if (string.IsNullOrEmpty (ApplicationName))
-				ApplicationName = "MonoDevelop";
+				ApplicationName = "HaxeDevelop";
 
 			if (string.IsNullOrEmpty (SuiteName))
 				SuiteName = ApplicationName;

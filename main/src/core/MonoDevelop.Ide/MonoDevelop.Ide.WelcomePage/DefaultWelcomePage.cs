@@ -43,10 +43,10 @@ namespace MonoDevelop.Ide.WelcomePage
 
 			var row1 = new WelcomePageRow ();
 			row1.PackStart (new WelcomePageButtonBar (
-				new WelcomePageBarButton ("MonoDevelop.com", "http://www.monodevelop.com", "link-cloud.png"),
-				new WelcomePageBarButton (GettextCatalog.GetString ("Documentation"), "http://www.go-mono.com/docs", "link-info.png"),
-				new WelcomePageBarButton (GettextCatalog.GetString ("Support"), "http://monodevelop.com/index.php?title=Help_%26_Contact", "link-heart.png"),
-				new WelcomePageBarButton (GettextCatalog.GetString ("Q&A"), "http://stackoverflow.com/questions/tagged/monodevelop", "link-chat.png")
+				new WelcomePageBarButton ("Haxe.org", "http://www.haxe.org", "link-cloud.png"),
+				new WelcomePageBarButton (GettextCatalog.GetString ("Documentation"), "http://www.http://haxe.org/doc", "link-info.png"),
+				new WelcomePageBarButton (GettextCatalog.GetString ("Support"), "https://groups.google.com/forum/#!forum/haxelang", "link-heart.png"),
+				new WelcomePageBarButton (GettextCatalog.GetString ("Q&A"), "https://groups.google.com/forum/#!forum/haxelang", "link-chat.png")
 				)
 			);
 			mainCol.PackStart (row1, false, false, 0);
@@ -56,7 +56,7 @@ namespace MonoDevelop.Ide.WelcomePage
 				new WelcomePageRecentProjectsList (GettextCatalog.GetString ("Solutions"))
 				),
 				new WelcomePageColumn (
-					new WelcomePageNewsFeed (GettextCatalog.GetString ("Xamarin News"), "http://software.xamarin.com/Service/News", "NewsLinks")
+					new WelcomePageNewsFeed (GettextCatalog.GetString ("Haxe News"), "http://software.xamarin.com/Service/News", "NewsLinks")
 				),
 				new WelcomePageColumn (
 					new WelcomePageTipOfTheDaySection ()

@@ -86,8 +86,8 @@ namespace MonoDevelop.Ide.Gui.Dialogs
 			};
 			cbox.PackStart (new Xwt.Label ("© 2011-" + DateTime.Now.Year + " "));
 			cbox.PackStart (new Xwt.LinkLabel () {
-				Text = string.Format ("Xamarin Inc."),
-				Uri = new Uri ("http://www.xamarin.com")
+				Text = string.Format ("Joshua Granick"),
+				Uri = new Uri ("http://www.joshuagranick.com")
 			});
 			infoBox.PackStart (cbox);
 			infoBox.PackStart (new Xwt.Label () {
