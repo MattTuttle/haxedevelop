@@ -97,7 +97,7 @@ namespace MonoDevelop.Ide.Projects {
 			}
 
 			TreeIter iter;
-//			ExpandCategory ("Haxe", out iter);
+			ExpandCategory ("Haxe", out iter);
 		}
 		
 		public void SelectTemplate (string id)
