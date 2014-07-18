@@ -97,7 +97,7 @@ namespace MonoDevelop.Ide.Projects {
 			}
 
 			TreeIter iter;
-			ExpandCategory ("C#", out iter);
+//			ExpandCategory ("Haxe", out iter);
 		}
 		
 		public void SelectTemplate (string id)
@@ -171,7 +171,7 @@ namespace MonoDevelop.Ide.Projects {
 					if (i >= cats.Length - 1 || !catStore.IterChildren (out nextIter, nextIter))
 						break;
 				} else if (i == 0) {
-					FindCategoryAtCurrentLevel ("C#", ref iter);
+					FindCategoryAtCurrentLevel ("Haxe", ref iter);
 					break;
 				}
 			}
@@ -192,7 +192,7 @@ namespace MonoDevelop.Ide.Projects {
 		{
 			InsertCategories (TreeIter.Zero, categories);
 			if (recentCategory.Templates.Count == 0)
-				SelectCategory (PropertyService.Get<string> ("Dialogs.NewProjectDialog.LastSelectedCategory", "C#"));
+				SelectCategory (PropertyService.Get<string> ("Dialogs.NewProjectDialog.LastSelectedCategory", "Haxe"));
 			else
 				SelectTemplate (recentCategory.Templates [0].Template.Id);
 			ShowAll ();

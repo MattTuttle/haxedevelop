@@ -56,7 +56,7 @@ namespace MonoDevelop.Projects.SharedAssetsProjects
 				return;
 
 			// TODO: load the type from msbuild
-			((SharedAssetsProject)EntityItem).LanguageName = "C#";
+			((SharedAssetsProject)EntityItem).LanguageName = "Haxe";
 
 			projitemsFile = Path.Combine (Path.GetDirectoryName (msproject.FileName), projitemsFile);
 

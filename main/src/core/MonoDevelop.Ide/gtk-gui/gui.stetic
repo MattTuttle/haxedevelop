@@ -5388,6 +5388,7 @@ Diagnostic</property>
                     <property name="Tooltip" translatable="yes">Switch to Find in Files</property>
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Find in Files</property>
+                    <property name="Active">True</property>
                     <property name="DrawIndicator">False</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
