@@ -1,62 +1,67 @@
 <SyntaxMode name="Haxe" mimeTypes="text/x-haxe">
-	
+
 	<!-- <Property name="LineComment">//</Property> -->
 	<Property name="BlockCommentStart">/*</Property>
 	<Property name="BlockCommentEnd">*/</Property>
 	<Property name="StringQuote">"</Property>
 	<Property name="StringQuote">'</Property>
-	
-	
-	<EolSpan color = "Comment(Line)" rule="Comment" tagColor="comment.tag.line">//</EolSpan>
-	
-	<Span color = "Comment(Block)" rule="Documentation" tagColor="comment.tag.block">
+
+
+	<EolSpan color="Comment(Line)" rule="Comment" tagColor="comment.tag.line">//</EolSpan>
+
+	<Span color="Comment(Block)" rule="Documentation" tagColor="comment.tag.block">
 		<Begin>/**</Begin>
 		<End>*/</End>
 	</Span>
-	
-	<Span color = "Comment(Block)" rule="Comment" tagColor="comment.tag.block">
+
+	<Span color="Comment(Block)" rule="Comment" tagColor="comment.tag.block">
 		<Begin>/*</Begin>
 		<End>*/</End>
 	</Span>
-	
-	<Span color = "Preprocessor" rule="text.preprocessor" stopateol="true">
+
+	<Span color="Preprocessor" rule="text.preprocessor" stopateol="true">
 		<Begin>#</Begin>
 		<End>#end</End>
 	</Span>
-	
-	<Span color = "String" rule="String" stopateol = "true" escape='\"'>
+
+	<Span color="Keyword(Operator Declaration)" stopateol="true">
+		<Begin>@:</Begin>
+		<End> </End>
+	</Span>
+
+	<Span color="String" rule="String" escape='\"'>
 		<Begin>"</Begin>
 		<End>"</End>
 	</Span>
 
-	<Span color = "String" rule="String" stopateol = "true" escape="\'">
+	<Span color="String" rule="String" escape="\'">
 		<Begin>&apos;</Begin>
 		<End>&apos;</End>
 	</Span>
-	
-	
-	<Match color = "Number">CSharpNumber</Match>
-	
-	<Keywords color = "Punctuation">
+
+
+	<Match color="Number">CSharpNumber</Match>
+
+	<Keywords color="Punctuation">
 		<Word>+</Word>
 		<Word>-</Word>
 		<Word>*</Word>
 		<Word>/</Word>
 		<Word>%</Word>
 		<Word>^</Word>
-		
+
 		<Word>?</Word>
 		<Word>:</Word>
-		
+
 		<Word>&amp;</Word>
-		
+
 		<Word>=</Word>
 		<Word>;</Word>
 		<Word>,</Word>
 		<Word>.</Word>
 	</Keywords>
-	
-	<Keywords color = "Punctuation(Brackets)">
+
+	<Keywords color="Punctuation(Brackets)">
 		<Word>(</Word>
 		<Word>)</Word>
 		<Word>&lt;</Word>
@@ -66,54 +71,54 @@
 		<Word>[</Word>
 		<Word>]</Word>
 	</Keywords>
-	
-	<Keywords color = "Keyword(Access)">
+
+	<Keywords color="Keyword(Access)">
 		<Word>this</Word>
 		<Word>super</Word>
 	</Keywords>
-	
-	<Keywords color = "Keyword(Operator)">
+
+	<Keywords color="Keyword(Operator)">
 		<Word>new</Word>
 	</Keywords>
-	
-	<Keywords color = "Keyword(Selection)">
+
+	<Keywords color="Keyword(Selection)">
 		<Word>else</Word>
 		<Word>if</Word>
 		<Word>switch</Word>
 		<Word>case</Word>
 		<Word>default</Word>
 	</Keywords>
-	
-	<Keywords color = "Keyword(Iteration)">
+
+	<Keywords color="Keyword(Iteration)">
 		<Word>do</Word>
 		<Word>for</Word>
 		<Word>in</Word>
 		<Word>while</Word>
 	</Keywords>
-	
-	<Keywords color = "Keyword(Jump)">
+
+	<Keywords color="Keyword(Jump)">
 		<Word>break</Word>
 		<Word>continue</Word>
 		<Word>return</Word>
 	</Keywords>
-	
-	<Keywords color = "Keyword(Exceptions)">
+
+	<Keywords color="Keyword(Exceptions)">
 		<Word>try</Word>
 		<Word>throw</Word>
 		<Word>catch</Word>
 	</Keywords>
-	
-	<Keywords color = "Keyword(Constants)">
+
+	<Keywords color="Keyword(Constants)">
 		<Word>true</Word>
 		<Word>false</Word>
 		<Word>null</Word>
 	</Keywords>
 
-	<Keywords color = "Keyword(Void)">
+	<Keywords color="Keyword(Void)">
 		<Word>void</Word>
 	</Keywords>
-		
-	<Keywords color = "Keyword(Type)">
+
+	<Keywords color="Keyword(Type)">
 		<Word>Bool</Word>
 		<Word>Enum</Word>
 		<Word>Int</Word>
@@ -127,11 +132,9 @@
 		<Word>Void</Word>
 		<Word>Array</Word>
 		<Word>Map</Word>
-		<Word>Hash</Word>
-		<Word>IntHash</Word>
 	</Keywords>
-	
-	<Keywords color = "Keyword(Declaration)">
+
+	<Keywords color="Keyword(Declaration)">
 		<Word>function</Word>
 		<Word>class</Word>
 		<Word>interface</Word>
@@ -140,9 +143,10 @@
 		<Word>var</Word>
 	</Keywords>
 
-	<Keywords color = "Keyword(Modifier)">
+	<Keywords color="Keyword(Modifiers)">
 		<Word>public</Word>
 		<Word>private</Word>
+		<Word>macro</Word>
 		<Word>extern</Word>
 		<Word>abstract</Word>
 		<Word>inline</Word>
@@ -153,13 +157,13 @@
 		<Word>implements</Word>
 	</Keywords>
 
-	<Keywords color = "Keyword(Namespace)">
+	<Keywords color="Keyword(Namespace)">
 		<Word>package</Word>
 		<Word>import</Word>
 		<Word>using</Word>
 	</Keywords>
-	
-	<Rule name = "text.preprocessor">
+
+	<Rule name="text.preprocessor">
 		<Keywords color="Keyword(Selection)">
 			<Word>if</Word>
 			<Word>else</Word>
@@ -168,8 +172,8 @@
 			<Word>error</Word>
 		</Keywords>
 	</Rule>
-	
-	<Rule name = "Comment">
+
+	<Rule name="Comment">
 		<Keywords color="Comment Tag" ignorecase="True">
 			<Word>TODO</Word>
 			<Word>FIXME</Word>
@@ -177,8 +181,8 @@
 			<Word>HACK</Word>
 		</Keywords>
 	</Rule>
-	
-	<Rule name = "Documentation">
+
+	<Rule name="Documentation">
 		<Keywords color="Comment(Keyword)" ignorecase="True">
 			<Word>@author</Word>
 			<Word>@deprecated</Word>
@@ -200,5 +204,5 @@
 			<Word>@usage</Word>
 		</Keywords>
 	</Rule>
-	
+
 </SyntaxMode>

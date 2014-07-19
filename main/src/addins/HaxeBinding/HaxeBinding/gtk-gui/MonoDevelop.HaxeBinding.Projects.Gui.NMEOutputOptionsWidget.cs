@@ -5,13 +5,19 @@ namespace MonoDevelop.HaxeBinding.Projects.Gui
 	public partial class NMEOutputOptionsWidget
 	{
 		private global::Gtk.Frame frame1;
-		private global::Gtk.Alignment GtkAlignment;
-		private global::Gtk.Table table1;
-		private global::Gtk.Entry AdditionalArgumentsEntry;
-		private global::Gtk.Label AdditionalArgumentsLabel;
-		private global::Gtk.HBox hbox1;
-		private global::Gtk.Label GtkLabel1;
 		
+		private global::Gtk.Alignment GtkAlignment;
+		
+		private global::Gtk.Table table1;
+		
+		private global::Gtk.Entry AdditionalArgumentsEntry;
+		
+		private global::Gtk.Label AdditionalArgumentsLabel;
+		
+		private global::Gtk.HBox hbox1;
+		
+		private global::Gtk.Label GtkLabel1;
+
 		protected virtual void Build ()
 		{
 			global::Stetic.Gui.Initialize (this);

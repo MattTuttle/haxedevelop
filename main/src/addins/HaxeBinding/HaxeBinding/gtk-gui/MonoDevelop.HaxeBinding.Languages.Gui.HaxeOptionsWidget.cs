@@ -5,17 +5,27 @@ namespace MonoDevelop.HaxeBinding.Languages.Gui
 	public partial class HaxeOptionsWidget
 	{
 		private global::Gtk.VBox vbox1;
-		private global::Gtk.Frame frame1;
-		private global::Gtk.Alignment GtkAlignment;
-		private global::Gtk.VBox vbox2;
-		private global::Gtk.CheckButton EnableCompilationServerCheckBox;
-		private global::Gtk.Table table1;
-		private global::Gtk.Entry PortNumberEntry;
-		private global::Gtk.Label PortNumberLabel;
-		private global::Gtk.Label GtkLabel2;
-		private global::Gtk.Frame frame2;
-		private global::Gtk.Alignment GtkAlignment1;
 		
+		private global::Gtk.Frame frame1;
+		
+		private global::Gtk.Alignment GtkAlignment;
+		
+		private global::Gtk.VBox vbox2;
+		
+		private global::Gtk.CheckButton EnableCompilationServerCheckBox;
+		
+		private global::Gtk.Table table1;
+		
+		private global::Gtk.Entry PortNumberEntry;
+		
+		private global::Gtk.Label PortNumberLabel;
+		
+		private global::Gtk.Label GtkLabel2;
+		
+		private global::Gtk.Frame frame2;
+		
+		private global::Gtk.Alignment GtkAlignment1;
+
 		protected virtual void Build ()
 		{
 			global::Stetic.Gui.Initialize (this);

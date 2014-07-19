@@ -18,7 +18,7 @@ namespace MonoDevelop.HaxeBinding.Tools
 
 	static class OpenFLCommandLineToolsManager
 	{
-		
+
 		private static Regex mErrorFull = new Regex (@"^(?<file>.+)\((?<line>\d+)\):\s(col:\s)?(?<column>\d*)\s?(?<level>\w+):\s(?<message>.*)\.?$", RegexOptions.Compiled | RegexOptions.ExplicitCapture);
 
 		// example: test.hx:11: character 7 : Unterminated string
@@ -27,7 +27,7 @@ namespace MonoDevelop.HaxeBinding.Tools
 		private static Regex mErrorFileChars = new Regex (@"^(?<file>.+):(?<line>\d+):\s(characters\s)(?<column>\d+)-(\d+)\s:\s(?<message>.*)\.?$", RegexOptions.Compiled | RegexOptions.ExplicitCapture);
 		// example: test.hx:10: lines 10-28 : Class not found : Sprite
 		private static Regex mErrorFile = new Regex (@"^(?<file>.+):(?<line>\d+):\s(?<message>.*)\.?$", RegexOptions.Compiled | RegexOptions.ExplicitCapture);
-		
+
 		private static Regex mErrorCmdLine = new Regex (@"^command line: (?<level>\w+):\s(?<message>.*)\.?$", RegexOptions.Compiled | RegexOptions.ExplicitCapture);
 		private static Regex mErrorSimple = new Regex (@"^(?<level>\w+):\s(?<message>.*)\.?$", RegexOptions.Compiled | RegexOptions.ExplicitCapture);
 		private static Regex mErrorIgnore = new Regex (@"^(Updated|Recompile|Reason|Files changed):.*", RegexOptions.Compiled);
@@ -36,16 +36,16 @@ namespace MonoDevelop.HaxeBinding.Tools
 		public static void Clean (OpenFLProject project, OpenFLProjectConfiguration configuration, IProgressMonitor monitor)
 		{
 			ProcessStartInfo info = new ProcessStartInfo ();
-			
+
 			info.FileName = "haxelib";
-			info.Arguments = "run openfl clean \"" + project.TargetProjectXMLFile + "\" " + configuration.Platform.ToLower () + " " + project.AdditionalArguments + " " + configuration.AdditionalArguments;
+			info.Arguments = "run lime clean \"" + project.TargetProjectXMLFile + "\" " + configuration.Platform.ToLower () + " " + project.AdditionalArguments + " " + configuration.AdditionalArguments;
 			info.UseShellExecute = false;
 			info.RedirectStandardOutput = true;
 			info.RedirectStandardError = true;
 			info.WorkingDirectory = project.BaseDirectory;
 			//info.WindowStyle = ProcessWindowStyle.Hidden;
 			info.CreateNoWindow = true;
-			
+
 			using (Process process = Process.Start (info))
 			{
 				process.WaitForExit ();
@@ -55,30 +55,30 @@ namespace MonoDevelop.HaxeBinding.Tools
 
 		public static BuildResult Compile (OpenFLProject project, OpenFLProjectConfiguration configuration, IProgressMonitor monitor)
 		{
-			string args = "run openfl build \"" + project.TargetProjectXMLFile + "\" " + configuration.Platform.ToLower ();
-			
+			string args = "run lime build \"" + project.TargetProjectXMLFile + "\" " + configuration.Platform.ToLower ();
+
 			if (configuration.DebugMode)
 			{
 				args += " -debug";
 			}
-			
+
 			if (project.AdditionalArguments != "")
 			{
 				args += " " + project.AdditionalArguments;
 			}
-			
+
 			if (configuration.AdditionalArguments != "")
 			{
 				args += " " + configuration.AdditionalArguments;
 			}
-			
+
 			string error = "";
 			int exitCode = DoCompilation ("haxelib", args, project.BaseDirectory, monitor, ref error);
-			
+
 			BuildResult result = ParseOutput (project, error);
 			if (result.CompilerOutput.Trim ().Length != 0)
 				monitor.Log.WriteLine (result.CompilerOutput);
-			
+
 			if (result.ErrorCount == 0 && exitCode != 0)
 			{
 				string errorMessage = File.ReadAllText (error);
@@ -91,12 +91,12 @@ namespace MonoDevelop.HaxeBinding.Tools
 					result.AddError ("Build failed. Go to \"Build Output\" for more information");
 				}
 			}
-			
+
 			FileService.DeleteFile (error);
 			return result;
 		}
-		
-		
+
+
 		private static BuildError CreateErrorFromString (OpenFLProject project, string text)
 		{
 			Match match = mErrorIgnore.Match (text);
@@ -112,7 +112,7 @@ namespace MonoDevelop.HaxeBinding.Tools
 				match = mErrorFileChars.Match (text);
 			if (!match.Success)
 				match = mErrorFile.Match (text);
-			    
+
 			if (!match.Success)
 				match = mErrorSimple.Match (text);
 			if (!match.Success)
@@ -124,7 +124,7 @@ namespace MonoDevelop.HaxeBinding.Tools
 			error.FileName = match.Result ("${file}") ?? "";
 			error.IsWarning = match.Result ("${level}").ToLower () == "warning";
 			error.ErrorText = match.Result ("${message}");
-			
+
 			if (error.FileName == "${file}")
 			{
 				error.FileName = "";
@@ -134,7 +134,7 @@ namespace MonoDevelop.HaxeBinding.Tools
 				if (!File.Exists (error.FileName))
 				{
 					if (File.Exists (Path.GetFullPath (error.FileName)))
-					{						
+					{
 						error.FileName = Path.GetFullPath (error.FileName);
 					}
 					else
@@ -153,11 +153,11 @@ namespace MonoDevelop.HaxeBinding.Tools
 				error.Column = n+1; //haxe counts zero based
 			else
 				error.Column = -1;
-			
+
 			return error;
 		}
-		
-		
+
+
 		private static int DoCompilation (string cmd, string args, string wd, IProgressMonitor monitor, ref string error)
 		{
 			int exitcode = 0;
@@ -188,28 +188,28 @@ namespace MonoDevelop.HaxeBinding.Tools
 
 			return exitcode;
 		}
-		
-		
+
+
 		public static string GetHXMLData (OpenFLProject project, OpenFLProjectConfiguration configuration)
 		{
 			ProcessStartInfo info = new ProcessStartInfo ();
-			
+
 			info.FileName = "haxelib";
-			info.Arguments = "run openfl update \"" + project.TargetProjectXMLFile + "\" " + configuration.Platform.ToLower () + " " + project.AdditionalArguments + " " + configuration.AdditionalArguments;
+			info.Arguments = "run lime update \"" + project.TargetProjectXMLFile + "\" " + configuration.Platform.ToLower () + " " + project.AdditionalArguments + " " + configuration.AdditionalArguments;
 			info.UseShellExecute = false;
 			info.RedirectStandardOutput = true;
 			info.RedirectStandardError = true;
 			info.WorkingDirectory = project.BaseDirectory;
 			//info.WindowStyle = ProcessWindowStyle.Hidden;
 			info.CreateNoWindow = true;
-			
+
 			using (Process process = Process.Start (info))
 			{
 				process.WaitForExit ();
 			}
-			
-			info.Arguments = "run openfl display \"" + project.TargetProjectXMLFile + "\" " + configuration.Platform.ToLower () + " " + project.AdditionalArguments + " " + configuration.AdditionalArguments;
-			
+
+			info.Arguments = "run lime display \"" + project.TargetProjectXMLFile + "\" " + configuration.Platform.ToLower () + " " + project.AdditionalArguments + " " + configuration.AdditionalArguments;
+
 			using (Process process = Process.Start (info))
 			{
 				string data = process.StandardOutput.ReadToEnd ();
@@ -230,8 +230,8 @@ namespace MonoDevelop.HaxeBinding.Tools
 
 			return result;
 		}
-		
-		
+
+
 		static void ParserOutputFile (OpenFLProject project, BuildResult result, StringBuilder output, string filename)
 		{
 			StreamReader reader = File.OpenText (filename);
@@ -244,7 +244,7 @@ namespace MonoDevelop.HaxeBinding.Tools
 				line = line.Trim ();
 				if (line.Length == 0 || line.StartsWith ("\t"))
 					continue;
-				
+
 				BuildError error = CreateErrorFromString (project, line);
 				if (error != null)
 					result.Append (error);
@@ -252,23 +252,23 @@ namespace MonoDevelop.HaxeBinding.Tools
 
 			reader.Close ();
 		}
-		
-		
+
+
 		private static ExecutionCommand CreateExecutionCommand (OpenFLProject project, OpenFLProjectConfiguration configuration)
 		{
 			string exe = "haxelib";
-			string args = "run openfl run \"" + project.TargetProjectXMLFile + "\" " + configuration.Platform.ToLower ();
-			
+			string args = "run lime run \"" + project.TargetProjectXMLFile + "\" " + configuration.Platform.ToLower ();
+
 			if (configuration.DebugMode)
 			{
 				args += " -debug";
 			}
-			
+
 			if (project.AdditionalArguments != "")
 			{
 				args += " " + project.AdditionalArguments;
 			}
-			
+
 			if (configuration.AdditionalArguments != "")
 			{
 				args += " " + configuration.AdditionalArguments;
@@ -277,11 +277,11 @@ namespace MonoDevelop.HaxeBinding.Tools
 			NativeExecutionCommand cmd = new NativeExecutionCommand (exe);
 			cmd.Arguments = args;
 			cmd.WorkingDirectory = project.BaseDirectory.FullPath;
-			
+
 			return cmd;
 		}
-		
-		
+
+
 		public static bool CanRun (OpenFLProject project, OpenFLProjectConfiguration configuration, ExecutionContext context)
 		{
 			ExecutionCommand cmd = CreateExecutionCommand (project, configuration);
@@ -312,9 +312,9 @@ namespace MonoDevelop.HaxeBinding.Tools
 					monitor.ReportError (String.Format ("Cannot execute '{0}'.", cmd), null);
 					return;
 				}
-				
+
 				IProcessAsyncOperation operation = context.ExecutionHandler.Execute (cmd, console);
-				
+
 				operationMonitor.AddOperation (operation);
 				operation.WaitForCompleted ();
 
@@ -330,7 +330,7 @@ namespace MonoDevelop.HaxeBinding.Tools
 				console.Dispose ();
 			}
 		}
-		
+
 	}
-	
+
 }

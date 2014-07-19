@@ -132,6 +132,9 @@
     <EmbeddedResource Include="Resources\Templates\EmptyOpenFLProjectXMLFile.xft.xml">
       <LogicalName>EmptyOpenFLProjectXMLFile.xft.xml</LogicalName>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Templates\EmptyLimeProject.xpt.xml">
+      <LogicalName>EmptyLimeProject.xpt.xml</LogicalName>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Projects\" />

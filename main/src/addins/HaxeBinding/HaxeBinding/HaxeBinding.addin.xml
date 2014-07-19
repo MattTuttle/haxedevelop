@@ -50,6 +50,7 @@
 		<ProjectTemplate id="EmptyHaxeJSProject" resource="EmptyHaxeJSProject.xpt.xml" />
 		<ProjectTemplate id="EmptyHaxeNekoProject" resource="EmptyHaxeNekoProject.xpt.xml" />
 		<ProjectTemplate id="EmptyHaxePHPProject" resource="EmptyHaxePHPProject.xpt.xml" />
+		<ProjectTemplate id="EmptyLimeProject" resource="EmptyLimeProject.xpt.xml" />
 		<ProjectTemplate id="EmptyOpenFLProject" resource="EmptyOpenFLProject.xpt.xml" />
 		<ProjectTemplate id="EmptyNMEProject" resource="EmptyNMEProject.xpt.xml" />
 	</Extension>
